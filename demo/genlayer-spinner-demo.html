@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GenLayer Spinner — Proposal v2</title>
+<style>
+  :root {
+    --cobalt: #110FFF;
+    --void: #070707;
+    --ceramic: #F5F5F5;
+    --chassis: #CACACA;
+    --asphalt: #606060;
+    --graphite: #303030;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #fff;
+    color: var(--void);
+  }
+  header { padding: 48px 32px 8px; max-width: 860px; margin: 0 auto; }
+  header h1 { font-size: 22px; letter-spacing: -0.01em; margin: 0 0 6px; }
+  header p { color: var(--asphalt); font-size: 14px; line-height: 1.55; margin: 0 0 8px; max-width: 660px; }
+  section { max-width: 860px; margin: 0 auto 40px; padding: 0 32px; }
+  section h2 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--asphalt); margin: 0 0 6px; }
+  section h2 + p.note { font-size: 13px; color: var(--asphalt); margin: 0 0 14px; max-width: 620px; line-height: 1.5; }
+  .panels { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .panel { border-radius: 12px; padding: 32px; display: flex; align-items: center; justify-content: center; gap: 40px; }
+  .panel--light { background: var(--ceramic); }
+  .panel--dark  { background: var(--void); }
+  .size-row { display: flex; align-items: flex-end; gap: 36px; }
+  .size-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .size-item span { font-size: 11px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .panel--light .size-item span { color: var(--asphalt); }
+  .panel--dark .size-item span { color: var(--chassis); }
+  .in-context { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 4px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px; font-size: 14px; font-weight: 500; border: none; cursor: default; }
+  .btn--primary { background: var(--cobalt); color: #fff; }
+  .btn--dark { background: var(--void); color: #fff; border: 1px solid var(--graphite); }
+  .page-loader { height: 220px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+  pre { background: var(--void); color: var(--ceramic); padding: 20px; border-radius: 10px; overflow-x: auto; font-size: 12.5px; line-height: 1.6; }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+  .gl-spinner { display: block; overflow: visible; }
+  .gl-spinner__mark { fill: var(--cobalt); }
+  .gl-spinner__ring { transform-origin: 24px 24px; animation: gl-spin 1.2s linear infinite; }
+  .gl-spinner__arc { fill: none; stroke: var(--cobalt); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 42 200; opacity: 0.55; }
+  @keyframes gl-spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .gl-spinner__ring { animation-duration: 3s; } }
+
+  .gl-spinner-sm {
+    --size: 20px; width: var(--size); height: var(--size); border-radius: 50%;
+    border: 2.5px solid color-mix(in srgb, var(--cobalt) 25%, transparent);
+    border-top-color: var(--cobalt); animation: gl-spin 0.8s linear infinite; flex: none;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>GenLayer Spinner — v2, built from the real mark</h1>
+  <p>Traced directly from the official symbol you shared. The mark stays fixed, full proportion, uncompromised — exactly as the brand guidelines specify. All the "loading" motion lives in a single thin ring in Kinetic Cobalt (#110FFF) that orbits around it.</p>
+  <p>The mark's fine detail (the inner notch, the small core triangle) only reads cleanly from ~32px up. Below that it anti-aliases into a blob, so below 32px it's better to drop the mark and keep just the ring — plain, universally read as "loading," still in brand color. Two tiers, one system.</p>
+</header>
+
+<section>
+  <h2>Tier 1 — Hero (32px+): mark + orbit ring</h2>
+  <p class="note">Loading pages, full-panel loading states, empty states, splash moments — anywhere the spinner is the main thing on screen.</p>
+  <div class="panels">
+    <div class="panel panel--light">
+      <div class="size-row">
+        <div class="size-item"><svg class="gl-spinner" style="width:32px;height:32px" viewBox="0 0 48 48"><g class="gl-spinner__ring"><circle class="gl-spinner__arc" cx="24" cy="24" r="19"/></g><g class="gl-spinner__mark"><path d="M23.03,14.5 L13.89,33.5 L22.83,29.99 L19.62,28.35 L23.03,21.19 Z"/><path d="M24.97,14.5 L24.97,21.19 L28.38,28.35 L25.17,29.99 L34.11,33.5 Z"/><path d="M23.94,23.57 L22.07,27.5 L23.96,28.48 L25.95,27.5 L24.03,23.69 Z"/></g></svg><span>32px</span></div>
+        <div class="size-item"><svg class="gl-spinner" style="width:48px;height:48px" viewBox="0 0 48 48"><g class="gl-spinner__ring"><circle class="gl-spinner__arc" cx="24" cy="24" r="19"/></g><g class="gl-spinner__mark"><path d="M23.03,14.5 L13.89,33.5 L22.83,29.99 L19.62,28.35 L23.03,21.19 Z"/><path d="M24.97,14.5 L24.97,21.19 L28.38,28.35 L25.17,29.99 L34.11,33.5 Z"/><path d="M23.94,23.57 L22.07,27.5 L23.96,28.48 L25.95,27.5 L24.03,23.69 Z"/></g></svg><span>48px</span></div>
+        <div class="size-item"><svg class="gl-spinner" style="width:96px;height:96px" viewBox="0 0 48 48"><g class="gl-spinner__ring"><circle class="gl-spinner__arc" cx="24" cy="24" r="19"/></g><g class="gl-spinner__mark"><path d="M23.03,14.5 L13.89,33.5 L22.83,29.99 L19.62,28.35 L23.03,21.19 Z"/><path d="M24.97,14.5 L24.97,21.19 L28.38,28.35 L25.17,29.99 L34.11,33.5 Z"/><path d="M23.94,23.57 L22.07,27.5 L23.96,28.48 L25.95,27.5 L24.03,23.69 Z"/></g></svg><span>96px</span></div>
+      </div>
+    </div>
+    <div class="panel panel--dark">
+      <div class="size-row">
+        <div class="size-item"><svg class="gl-spinner" style="width:32px;height:32px" viewBox="0 0 48 48"><g class="gl-spinner__ring"><circle class="gl-spinner__arc" cx="24" cy="24" r="19"/></g><g class="gl-spinner__mark"><path d="M23.03,14.5 L13.89,33.5 L22.83,29.99 L19.62,28.35 L23.03,21.19 Z"/><path d="M24.97,14.5 L24.97,21.19 L28.38,28.35 L25.17,29.99 L34.11,33.5 Z"/><path d="M23.94,23.57 L22.07,27.5 L23.96,28.48 L25.95,27.5 L24.03,23.69 Z"/></g></svg><span>32px</span></div>
+        <div class="size-item"><svg class="gl-spinner" style="width:48px;height:48px" viewBox="0 0 48 48"><g class="gl-spinner__ring"><circle class="gl-spinner__arc" cx="24" cy="24" r="19"/></g><g class="gl-spinner__mark"><path d="M23.03,14.5 L13.89,33.5 L22.83,29.99 L19.62,28.35 L23.03,21.19 Z"/><path d="M24.97,14.5 L24.97,21.19 L28.38,28.35 L25.17,29.99 L34.11,33.5 Z"/><path d="M23.94,23.57 L22.07,27.5 L23.96,28.48 L25.95,27.5 L24.03,23.69 Z"/></g></svg><span>48px</span></div>
+        <div class="size-item"><svg class="gl-spinner" style="width:96px;height:96px" viewBox="0 0 48 48"><g class="gl-spinner__ring"><circle class="gl-spinner__arc" cx="24" cy="24" r="19"/></g><g class="gl-spinner__mark"><path d="M23.03,14.5 L13.89,33.5 L22.83,29.99 L19.62,28.35 L23.03,21.19 Z"/><path d="M24.97,14.5 L24.97,21.19 L28.38,28.35 L25.17,29.99 L34.11,33.5 Z"/><path d="M23.94,23.57 L22.07,27.5 L23.96,28.48 L25.95,27.5 L24.03,23.69 Z"/></g></svg><span>96px</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="in-context" style="margin-top:16px;">
+    <div class="panel panel--light page-loader" style="flex:1 1 300px;"><svg class="gl-spinner" style="width:40px;height:40px" viewBox="0 0 48 48"><g class="gl-spinner__ring"><circle class="gl-spinner__arc" cx="24" cy="24" r="19"/></g><g class="gl-spinner__mark"><path d="M23.03,14.5 L13.89,33.5 L22.83,29.99 L19.62,28.35 L23.03,21.19 Z"/><path d="M24.97,14.5 L24.97,21.19 L28.38,28.35 L25.17,29.99 L34.11,33.5 Z"/><path d="M23.94,23.57 L22.07,27.5 L23.96,28.48 L25.95,27.5 L24.03,23.69 Z"/></g></svg></div>
+    <div class="panel panel--dark page-loader" style="flex:1 1 300px;"><svg class="gl-spinner" style="width:40px;height:40px" viewBox="0 0 48 48"><g class="gl-spinner__ring"><circle class="gl-spinner__arc" cx="24" cy="24" r="19"/></g><g class="gl-spinner__mark"><path d="M23.03,14.5 L13.89,33.5 L22.83,29.99 L19.62,28.35 L23.03,21.19 Z"/><path d="M24.97,14.5 L24.97,21.19 L28.38,28.35 L25.17,29.99 L34.11,33.5 Z"/><path d="M23.94,23.57 L22.07,27.5 L23.96,28.48 L25.95,27.5 L24.03,23.69 Z"/></g></svg></div>
+  </div>
+</section>
+
+<section>
+  <h2>Tier 2 — Inline (under 32px): plain ring</h2>
+  <p class="note">Buttons, inline status text, table rows — anywhere the spinner is a small supporting element rather than the focus.</p>
+  <div class="in-context">
+    <button class="btn btn--primary">
+      <span class="gl-spinner-sm" style="--size:14px; border-color: color-mix(in srgb, #fff 30%, transparent); border-top-color:#fff;"></span>
+      Submitting transaction…
+    </button>
+    <button class="btn btn--dark">
+      <span class="gl-spinner-sm" style="--size:14px;"></span>
+      Confirming with validators…
+    </button>
+  </div>
+</section>
+
+<section>
+  <h2>Code — Tier 1, mark + ring (SVG)</h2>
+  <pre><code>&lt;svg class="gl-spinner" viewBox="0 0 48 48" role="status" aria-label="Loading"&gt;
+  &lt;g class="gl-spinner__ring"&gt;
+    &lt;circle class="gl-spinner__arc" cx="24" cy="24" r="19" /&gt;
+  &lt;/g&gt;
+  &lt;g class="gl-spinner__mark"&gt;
+    &lt;path d="M23.03,14.5 L13.89,33.5 L22.83,29.99 L19.62,28.35 L23.03,21.19 Z" /&gt;
+    &lt;path d="M24.97,14.5 L24.97,21.19 L28.38,28.35 L25.17,29.99 L34.11,33.5 Z" /&gt;
+    &lt;path d="M23.94,23.57 L22.07,27.5 L23.96,28.48 L25.95,27.5 L24.03,23.69 Z" /&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
+
+&lt;style&gt;
+.gl-spinner { width: 48px; height: 48px; display: block; overflow: visible; }
+.gl-spinner__mark { fill: #110FFF; }              /* the mark: static, never animated */
+.gl-spinner__ring { transform-origin: 24px 24px; animation: gl-spin 1.2s linear infinite; }
+.gl-spinner__arc {
+  fill: none; stroke: #110FFF; stroke-width: 2.5;
+  stroke-linecap: round; stroke-dasharray: 42 200; opacity: 0.55;
+}
+@keyframes gl-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .gl-spinner__ring { animation-duration: 3s; }
+}
+&lt;/style&gt;</code></pre>
+</section>
+
+<section>
+  <h2>Code — Tier 2, plain ring (CSS only)</h2>
+  <pre><code>.gl-spinner-sm {
+  --size: 20px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  border: 2.5px solid color-mix(in srgb, #110FFF 25%, transparent);
+  border-top-color: #110FFF;
+  animation: gl-spin 0.8s linear infinite;
+}
+@keyframes gl-spin { to { transform: rotate(360deg); } }</code></pre>
+</section>
+
+</body>
+</html>
