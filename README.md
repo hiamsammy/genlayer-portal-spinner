@@ -4,7 +4,7 @@ A community-contributed loading spinner designed for the GenLayer Portal. I want
 
 ## Concept
 
-I kept the GenLayer mark stays **static** full proportion, never distorted or rotated, in line with the brand guideline that the mark is a fixed system variable. All the "loading" motion lives in a single thin ring, in Kinetic Cobalt (`#110FFF`), that orbits around it. Identity and motion are kept as two separate layers instead of animating the mark itself.
+I kept the GenLayer mark **static** full proportion, never distorted or rotated, in line with the brand guideline that the mark is a fixed system variable. All the "loading" motion lives in a single thin ring, in Kinetic Cobalt (`#110FFF`), that orbits around it. Identity and motion are kept as two separate layers instead of animating the mark itself.
 
 **Why cobalt:** `#110FFF` is the signature color in GenLayer's palette — saturated enough to read on both `#F5F5F5` (Ceramic Node) and `#070707` (Carbon Void), so one color file works on light and dark without a separate variant. Green/red were avoided since those are reserved for state (success/error), not neutral loading.
 
